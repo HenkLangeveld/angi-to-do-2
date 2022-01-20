@@ -1,6 +1,6 @@
 <template>
   <li class="c-app__list-item" :class="{ 'is-done': isDone }">
-    <label :for="id">{{ toDo }} {{ isDone }}</label>
+    <label :for="id">{{ toDo }}</label>
     <input type="checkbox" :id="id" :checked="isDone" @click="toggleIsDone" />
   </li>
 </template>
@@ -9,7 +9,7 @@
 export default {
   props: {
     id: {
-      type: String,
+      type: Number,
       required: true,
     },
     toDo: {
@@ -22,6 +22,16 @@ export default {
       default: false,
     },
   },
+  emits: {
+    "toggle-is-done": function (id) {
+      if (id) {
+        return true;
+      } else {
+        console.warn("id is missing");
+        return false;
+      }
+    },
+  },
   // data() {
   //   return {
   //     isDone: false,
@@ -29,7 +39,6 @@ export default {
   // },
   methods: {
     toggleIsDone() {
-      // this.isDone = !this.isDone;
       this.$emit("toggle-is-done", this.id);
     },
   },

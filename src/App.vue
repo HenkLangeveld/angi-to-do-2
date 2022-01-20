@@ -9,6 +9,10 @@
       </p>
     </header>
     <main>
+      <h2>New to-do</h2>
+      <new-item @add-item="addToDo"></new-item>
+
+      <h2>Current to-do's</h2>
       <ul>
         <to-do
           v-for="toDo in toDos"
@@ -24,29 +28,30 @@
       <h2 class="c-footer__title">Usefull links</h2>
     </footer>
   </div>
-  <!-- <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+  <!-- o-wrapper -->
 </template>
 
 <script>
+import NewItem from "./components/NewItem.vue";
 import ToDo from "./components/ToDo.vue";
 export default {
-  components: { ToDo },
+  components: { ToDo, NewItem },
   data() {
     return {
+      id: 3,
       toDos: [
         {
-          id: "1",
+          id: 1,
           value: "Reading about Angi Studio",
           isDone: false,
         },
         {
-          id: "2",
+          id: 2,
           value: "Writing a letter",
           isDone: true,
         },
         {
-          id: "3",
+          id: 3,
           value: "Gathering Code",
           isDone: false,
         },
@@ -55,9 +60,16 @@ export default {
   },
   methods: {
     toggleIsDone(id) {
-      console.log("toggle");
       const identifiedToDo = this.toDos.find((toDo) => toDo.id === id);
       identifiedToDo.isDone = !identifiedToDo.isDone;
+    },
+    addToDo(item) {
+      this.id++;
+      this.toDos.push({
+        id: this.id,
+        value: item,
+        isDone: false,
+      });
     },
   },
 };
