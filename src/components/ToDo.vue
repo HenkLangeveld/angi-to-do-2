@@ -1,25 +1,36 @@
 <template>
   <li class="c-app__list-item" :class="{ 'is-done': isDone }">
-    {{ toDo }} <input type="checkbox" @click="toggleIsDone" />
+    <label :for="id">{{ toDo }} {{ isDone }}</label>
+    <input type="checkbox" :id="id" :checked="isDone" @click="toggleIsDone" />
   </li>
 </template>
 
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     toDo: {
       type: String,
       required: true,
     },
+    isDone: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
-  data() {
-    return {
-      isDone: false,
-    };
-  },
+  // data() {
+  //   return {
+  //     isDone: false,
+  //   };
+  // },
   methods: {
     toggleIsDone() {
-      this.isDone = !this.isDone;
+      // this.isDone = !this.isDone;
+      this.$emit("toggle-is-done", this.id);
     },
   },
 };

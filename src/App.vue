@@ -10,10 +10,14 @@
     </header>
     <main>
       <ul>
-        <to-do v-for="toDo in toDos" :key="toDo.id" :toDo="toDo.value"></to-do>
-        <!-- <to-do to-do="read"></to-do>
-        <to-do to-do="write"></to-do>
-        <to-do to-do="gather"></to-do> -->
+        <to-do
+          v-for="toDo in toDos"
+          :key="toDo.id"
+          :id="toDo.id"
+          :toDo="toDo.value"
+          :isDone="toDo.isDone"
+          @toggle-is-done="toggleIsDone"
+        ></to-do>
       </ul>
     </main>
     <footer>
@@ -32,19 +36,29 @@ export default {
     return {
       toDos: [
         {
-          id: 1,
+          id: "1",
           value: "Reading about Angi Studio",
+          isDone: false,
         },
         {
-          id: 2,
+          id: "2",
           value: "Writing a letter",
+          isDone: true,
         },
         {
-          id: 3,
+          id: "3",
           value: "Gathering Code",
+          isDone: false,
         },
       ],
     };
+  },
+  methods: {
+    toggleIsDone(id) {
+      console.log("toggle");
+      const identifiedToDo = this.toDos.find((toDo) => toDo.id === id);
+      identifiedToDo.isDone = !identifiedToDo.isDone;
+    },
   },
 };
 // import HelloWorld from "./components/HelloWorld.vue";
