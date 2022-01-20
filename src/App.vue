@@ -10,8 +10,10 @@
     </header>
     <main>
       <ul>
-        <to-do></to-do>
-        <to-do></to-do>
+        <to-do v-for="toDo in toDos" :key="toDo.id" :toDo="toDo.value"></to-do>
+        <!-- <to-do to-do="read"></to-do>
+        <to-do to-do="write"></to-do>
+        <to-do to-do="gather"></to-do> -->
       </ul>
     </main>
     <footer>
@@ -23,13 +25,24 @@
 </template>
 
 <script>
+import ToDo from "./components/ToDo.vue";
 export default {
+  components: { ToDo },
   data() {
     return {
       toDos: [
-        "Reading about Angi Studio",
-        "Writing a letter",
-        "Gathering Code",
+        {
+          id: 1,
+          value: "Reading about Angi Studio",
+        },
+        {
+          id: 2,
+          value: "Writing a letter",
+        },
+        {
+          id: 3,
+          value: "Gathering Code",
+        },
       ],
     };
   },

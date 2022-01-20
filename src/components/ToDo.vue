@@ -6,9 +6,14 @@
 
 <script>
 export default {
+  props: {
+    toDo: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
-      toDo: "Read",
       isDone: false,
     };
   },
