@@ -1,13 +1,6 @@
 <template>
   <div class="o-wrapper">
-    <header class="c-main-header">
-      <div class="c-main-header__logo">Logo</div>
-      <h1 class="c-main-header__title">Job application</h1>
-      <p class="c-main-header__text">
-        This to-do list contains the tasks I need to complete so I can apply to
-        a job well prepared.
-      </p>
-    </header>
+    <the-header></the-header>
     <main>
       <h2>New to-do</h2>
       <new-item @add-item="addToDo"></new-item>
@@ -25,18 +18,24 @@
         ></to-do>
       </ul>
     </main>
-    <footer>
-      <h2 class="c-footer__title">Usefull links</h2>
-    </footer>
+    <the-footer></the-footer>
   </div>
   <!-- o-wrapper -->
 </template>
 
 <script>
-import NewItem from "./components/NewItem.vue";
+import TheHeader from "./components/TheHeader.vue";
+import TheFooter from "./components/TheFooter.vue";
 import ToDo from "./components/ToDo.vue";
+import NewItem from "./components/NewItem.vue";
+
 export default {
-  components: { ToDo, NewItem },
+  components: {
+    TheHeader,
+    TheFooter,
+    ToDo,
+    NewItem,
+  },
   data() {
     return {
       id: 3,
@@ -77,14 +76,6 @@ export default {
     },
   },
 };
-// import HelloWorld from "./components/HelloWorld.vue";
-
-// export default {
-//   name: "App",
-//   components: {
-//     HelloWorld,
-//   },
-// };
 </script>
 
 <style lang="scss">
