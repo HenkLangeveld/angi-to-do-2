@@ -21,6 +21,7 @@
           :toDo="toDo.value"
           :isDone="toDo.isDone"
           @toggle-is-done="toggleIsDone"
+          @deleteItem="deleteItem"
         ></to-do>
       </ul>
     </main>
@@ -70,6 +71,9 @@ export default {
         value: item,
         isDone: false,
       });
+    },
+    deleteItem(item) {
+      this.toDos = this.toDos.filter((toDo) => toDo.id !== item);
     },
   },
 };

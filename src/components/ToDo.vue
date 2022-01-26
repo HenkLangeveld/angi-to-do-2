@@ -2,6 +2,7 @@
   <li class="c-app__list-item" :class="{ 'is-done': isDone }">
     <label :for="id">{{ toDo }}</label>
     <input type="checkbox" :id="id" :checked="isDone" @click="toggleIsDone" />
+    <button @click="deleteToDo">Delete item</button>
   </li>
 </template>
 
@@ -31,6 +32,14 @@ export default {
         return false;
       }
     },
+    deleteItem: function (id) {
+      if (id) {
+        return true;
+      } else {
+        console.warn("id is missing");
+        return false;
+      }
+    },
   },
   // data() {
   //   return {
@@ -40,6 +49,9 @@ export default {
   methods: {
     toggleIsDone() {
       this.$emit("toggle-is-done", this.id);
+    },
+    deleteToDo() {
+      this.$emit("deleteItem", this.id);
     },
   },
 };
