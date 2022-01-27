@@ -8,3 +8,35 @@
     </p>
   </header>
 </template>
+
+<style lang="scss" scoped>
+$breakpoint-1: 600px;
+
+.c-main-header {
+  &__logo {
+    width: 106.3px;
+  }
+
+  &__title {
+    font-size: 2.3rem;
+    font-weight: 600;
+    margin-top: 30px;
+
+    @media (min-width: $breakpoint-1) {
+      font-size: 3rem;
+      margin-top: 68.8px;
+    }
+  }
+
+  &__text {
+    font-weight: 300;
+    max-width: 36ch;
+    margin-top: 1rem;
+
+    @media (min-width: $breakpoint-1) {
+      font-size: 1.5625rem;
+      margin-bottom: 30px;
+    }
+  }
+}
+</style>
